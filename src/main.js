@@ -1,35 +1,54 @@
-import data from './data.js'
+import data from './data/index.js'
 import getConfig from './config.js'
 
-const charData = getConfig({ data })
+data.forEach((o) => {
+  const charData = getConfig(o.config)
 
-const len = data.length
+  const len = charData.length
 
-const to = charData.reduce((pre, cur) => {
-  return (pre += cur.to)
-}, 0)
-const toAvg = to / data.length
-console.log(toAvg)
+  const to = charData.reduce((pre, cur) => {
+    return (pre += cur.to)
+  }, 0)
+  const toAvg = (to / len).toFixed(2)
 
-const count = charData.reduce((pre, cur) => {
-  return (pre += cur.count)
-}, 0)
-const countAvg = count / data.length
-console.log(countAvg)
+  const count = charData.reduce((pre, cur) => {
+    return (pre += cur.count)
+  }, 0)
+  const countAvg = (count / len).toFixed(2)
 
-const { DualAxes } = G2Plot
+  /**
+   * dom
+   */
+  const fragEL = document.createDocumentFragment()
 
-const chart = new DualAxes('container', {
-  data: [charData, charData],
-  xField: 'date',
-  yField: ['count', 'to'],
-  geometryOptions: [
-    {
-      geometry: 'column',
-    },
-  ],
+  const infoEl = document.createElement('div')
+  const title = o.title
+  infoEl.innerText = `${title} - ${len} - ${countAvg} - ${toAvg}`
+
+  const contEl = document.createElement('div')
+  const contElId = title
+  contEl.id = contElId
+
+  fragEL.appendChild(infoEl)
+  fragEL.appendChild(contEl)
+
+  document.body.appendChild(fragEL)
+
+  /**
+   * chart
+   */
+  const { DualAxes } = G2Plot
+  const chart = new DualAxes(contElId, {
+    data: [charData, charData],
+    xField: 'date',
+    yField: ['count', 'to'],
+    geometryOptions: [
+      {
+        geometry: 'column',
+      },
+    ],
+    legend: '',
+  })
+
+  chart.render()
 })
-
-chart.render()
-
-console.log(data)

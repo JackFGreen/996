@@ -251,4 +251,9 @@ const data = [
   },
 ]
 
-export default data
+export default {
+  title: 'ict',
+  config: {
+    data,
+  },
+}
