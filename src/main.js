@@ -19,8 +19,6 @@ data.forEach((o) => {
   /**
    * dom
    */
-  const fragEL = document.createDocumentFragment()
-
   const infoEl = document.createElement('div')
   const title = o.title
   infoEl.innerText = `${title} - ${len} - ${countAvg} - ${toAvg}`
@@ -29,10 +27,13 @@ data.forEach((o) => {
   const contElId = title
   contEl.id = contElId
 
-  fragEL.appendChild(infoEl)
-  fragEL.appendChild(contEl)
+  const wrapEL = document.createElement('div')
+  wrapEL.className = 'wrap'
+  wrapEL.appendChild(infoEl)
+  wrapEL.appendChild(contEl)
 
-  document.body.appendChild(fragEL)
+  const rootEl = document.getElementById('root')
+  rootEl.appendChild(wrapEL)
 
   /**
    * chart
