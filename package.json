@@ -1,0 +1,25 @@
+{
+  "name": "996",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "WEB_APP_PORT=3029 node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JackFGreen/996.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JackFGreen/996/issues"
+  },
+  "homepage": "https://github.com/JackFGreen/996#readme",
+  "devDependencies": {
+    "koa": "^2.13.1",
+    "koa-static": "^5.0.0"
+  }
+}
