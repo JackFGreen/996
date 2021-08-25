@@ -7,8 +7,13 @@
  */
 export default function getConfig({ base = 18, data }) {
   return data.map((o) => {
-    const count = (o.to * 100 - (o.from || base) * 100) / 100
-    const to = o.from ? o.to + count : o.to
+    let { count, from, to } = o
+    count = count ?? 0
+    to = to ?? base
+
+    count = (to * 100 - (from || base) * 100) / 100
+    to = from ? to + count : to
+
     return {
       ...o,
       count,
