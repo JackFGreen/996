@@ -93,6 +93,10 @@ const data = [
     date: '2021-08-25',
     to: 27
   },
+  {
+    date: '2021-09-06',
+    to: 21.38
+  },
 ]
 
 export default {
