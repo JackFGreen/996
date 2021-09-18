@@ -109,6 +109,10 @@ const data = [
     date: '2021-09-15',
     to: 22.20
   },
+  {
+    date: '2021-09-17',
+    to: 21.30
+  },
 ]
 
 export default {
